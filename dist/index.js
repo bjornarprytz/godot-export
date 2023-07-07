@@ -59809,11 +59809,12 @@ async function addEditorSettings() {
 async function importProject() {
     core.startGroup('🎲 Import project');
     try {
+        const firstPreset = getExportPresets()[0];
         await (0,exec.exec)(godotExecutablePath, [
             GODOT_PROJECT_FILE_PATH,
             '--headless',
             '--export-release',
-            'Linux/X11',
+            firstPreset.name,
             '/path/to/nonexistent/file',
         ]);
     }
