@@ -340,7 +340,13 @@ async function addEditorSettings(): Promise<void> {
 async function importProject(): Promise<void> {
   core.startGroup('🎲 Import project');
   try {
-    await exec(godotExecutablePath, [GODOT_PROJECT_FILE_PATH, '--export', 'Linux/X11', '/path/to/nonexistent/file']);
+    await exec(godotExecutablePath, [
+      GODOT_PROJECT_FILE_PATH,
+      '--headless',
+      '--export-release',
+      'Linux/X11',
+      '/path/to/nonexistent/file',
+    ]);
   } catch (_) {
     // do nothing
   }

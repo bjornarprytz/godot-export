@@ -59809,7 +59809,13 @@ async function addEditorSettings() {
 async function importProject() {
     core.startGroup('🎲 Import project');
     try {
-        await (0,exec.exec)(godotExecutablePath, [GODOT_PROJECT_FILE_PATH, '--export', 'Linux/X11', '/path/to/nonexistent/file']);
+        await (0,exec.exec)(godotExecutablePath, [
+            GODOT_PROJECT_FILE_PATH,
+            '--headless',
+            '--export-release',
+            'Linux/X11',
+            '/path/to/nonexistent/file',
+        ]);
     }
     catch (_) {
         // do nothing
